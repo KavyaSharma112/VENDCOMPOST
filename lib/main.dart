@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-// ignore: unused_import
-import 'package:vendcompost/screens/sensordata.dart';
-import 'package:vendcompost/screens/splashscreen.dart';
+
+import 'package:vendcompost/screens/splashscreen.dart.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,3 +17,14 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+/*
+New app features requirements:
+ 
+Suggestive addition or subtraction of raw waste as to balance mineral values
+ 
+Temperature sensing and using it to control power to geyser and water pump
+ 
+Integration for gas sensor for gas production monitoring
+ 
+Variable timing reminder to open valve / pull the flush on personal device to transfer stuff from upper container to lower.
+ */

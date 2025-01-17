@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:vendcompost/screens/compoststagesPagestate.dart';
 
@@ -14,6 +13,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 2), () {
+      // ignore: use_build_context_synchronously
       Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (_) => const CompostStagesPageState()));
     });
