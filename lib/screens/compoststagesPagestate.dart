@@ -6,6 +6,8 @@ import 'package:vendcompost/screens/additionalinfoPage.dart';
 import 'package:vendcompost/screens/motorcontrol.dart';
 
 import 'package:vendcompost/screens/npkdata.dart';
+import 'package:vendcompost/screens/suggestionsPage.dart';
+
 
 class CompostStagesPageState extends StatefulWidget {
   const CompostStagesPageState({super.key});
@@ -181,25 +183,35 @@ class _CompostStagesPageState extends State<CompostStagesPageState> {
 
   // Function to handle navigation bar tap
 
-  void _onItemTapped(int index) {
-    if (index == 1) {
-      // Navigate to Motor Control Page
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const MotorControl()),
-      ).then((_) {
-        // Set index to 0 when coming back from Motor Control Page
-        setState(() {
-          _selectedIndex = 0;
-        });
-      });
-    } else {
-      // Set index to Home tab
+void _onItemTapped(int index) {
+  if (index == 1) {
+    // Navigate to Motor Control Page
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const MotorControl()),
+    ).then((_) {
       setState(() {
-        _selectedIndex = index;
+        _selectedIndex = 0;
       });
-    }
+    });
+  } else if (index == 2) {
+    // Navigate to Suggestions Page
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const SuggestionsPage()),
+    ).then((_) {
+      setState(() {
+        _selectedIndex = 0;
+      });
+    });
+  } else {
+    // Set index to Home tab
+    setState(() {
+      _selectedIndex = index;
+    });
   }
+}
+
 
   // Pages to display based on selected index
 
@@ -325,20 +337,49 @@ class _CompostStagesPageState extends State<CompostStagesPageState> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Motor Control',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        selectedItemColor: Colors.amber[800],
-      ),
+  items: const [
+    BottomNavigationBarItem(
+      icon: Icon(Icons.home),
+      label: 'Home',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.settings),
+      label: 'Motor Control',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.lightbulb),
+      label: 'Suggestions',  // New icon for suggestions
+    ),
+  ],
+  currentIndex: _selectedIndex,
+  onTap: (index) {
+    if (index == 1) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const MotorControl()),
+      ).then((_) {
+        setState(() {
+          _selectedIndex = 0;
+        });
+      });
+    } else if (index == 2) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const SuggestionsPage()),
+      ).then((_) {
+        setState(() {
+          _selectedIndex = 0;
+        });
+      });
+    } else {
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
+  },
+  selectedItemColor: Colors.amber[800],
+),
+
     );
   }
 
